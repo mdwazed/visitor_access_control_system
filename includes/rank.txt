@@ -1,0 +1,16 @@
+<?php
+
+$sql_search = "SELECT rowID,rankName FROM tbl_rank ORDER BY rowID";
+$result_all_rows = $db->execQuery($sql_search);		
+$num_of_rows_found=mysql_num_rows($result_all_rows);
+
+if($num_of_rows_found>0){
+
+		$result_array = $db->resultArray($result_all_rows);
+		for($i=0; $i<$num_of_rows_found; $i++){		
+?>
+                    	<option value="<?php echo $result_array[$i]['rowID'];?>"><?php echo $result_array[$i]['rankName'];?></option>
+<?php
+		}		
+}
+?>

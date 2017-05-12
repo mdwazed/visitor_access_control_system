@@ -1,0 +1,96 @@
+
+body {
+background-color:#f1f1f1;
+font-family: georgia,sans-serif;
+color:#333;
+margin:0;
+padding:0;
+}
+
+#wrapper {
+width:990px;
+background-color:#f8f8f8;
+
+margin:0 auto;
+border-left:1px solid #ccc;
+border-right:1px solid #ccc;
+}
+
+#header {
+background:url(http://localhost/vacs/images/banner1.jpg) no-repeat top center;
+width:960px;
+height:135px;
+margin:0 auto;
+margin-bottom:20px;
+border-bottom:1px solid #ccc;
+border-top:1px solid #ccc;
+}
+
+#header logo{
+background:url(http://localhost/vacs/images/bdArmy11.jpg) no-repeat top right;
+display:inline;
+width:960px;
+height:135px;
+padding-right: XXpx;
+}
+
+#header h2 {
+padding:10px;
+
+}
+
+#nav {
+width:960px;
+height:40px;
+border-bottom:1px solid #ccc;
+}
+
+#nav a {
+display:inline;
+padding:10px;
+text-decoration:none;
+background-color:#f1f1f1;
+}
+
+#nav a:hover {
+background-color:#bababa;
+height:80px;
+}
+
+#content {
+width:950px;
+height:auto;
+padding:10px;
+margin:0 auto;
+
+}
+
+#sidebar {
+width:200px;
+float:right;
+margin-bottom:25px;
+
+margin:0 auto;
+border-bottom:1px solid #ccc;
+border-top:1px solid #ccc;
+}
+
+#sidebar a {
+text-decoration:none;
+}
+
+#sidebar li {
+list-style:none;
+}
+
+#footer {
+clear:both;
+width:960px;
+height:135px;
+border-top:1px solid #ccc;
+}
+
+#footer p {
+padding:10px;
+}
+

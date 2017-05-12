@@ -1,0 +1,502 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.6
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Dec 07, 2012 at 02:38 PM
+-- Server version: 5.0.51
+-- PHP Version: 5.2.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `vacs`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_admin_config`
+--
+
+CREATE TABLE `tbl_admin_config` (
+  `rowID` int(11) NOT NULL auto_increment,
+  `noOfVisits` int(3) default NULL,
+  PRIMARY KEY  (`rowID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `tbl_admin_config`
+--
+
+INSERT INTO `tbl_admin_config` (`rowID`, `noOfVisits`) VALUES
+(1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_appointment`
+--
+
+CREATE TABLE `tbl_appointment` (
+  `rowID` int(3) NOT NULL auto_increment,
+  `appointmentName` varchar(25) NOT NULL,
+  `appointmentDescription` text,
+  `isDisabled` varchar(3) default 'no',
+  PRIMARY KEY  (`rowID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `tbl_appointment`
+--
+
+INSERT INTO `tbl_appointment` (`rowID`, `appointmentName`, `appointmentDescription`, `isDisabled`) VALUES
+(1, 'Dir', 'Director', 'no'),
+(2, 'GSO-1', 'Staff Officer 1', 'no'),
+(3, 'GSO-2', 'Staff Officer Grade-2', 'no'),
+(4, 'GSO-3', 'Staff Officer Grade-3', 'no');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_archive_pass`
+--
+
+CREATE TABLE `tbl_archive_pass` (
+  `rowID` int(11) NOT NULL auto_increment,
+  `passID` int(11) NOT NULL,
+  `visitorName` varchar(25) NOT NULL,
+  `visitorType` varchar(8) NOT NULL,
+  `visitorAddress` varchar(100) default NULL,
+  `directorateToVisit` int(3) NOT NULL,
+  `purposeOfVisit` int(3) default NULL,
+  `scheduledVisitDate` date NOT NULL,
+  `isMultipleEntry` varchar(3) NOT NULL default 'no',
+  `passCreator` varchar(15) NOT NULL,
+  `sentryUserName` varchar(25) default NULL,
+  `mobileNumber` int(11) default NULL,
+  `nationalID` int(13) default NULL,
+  `visitorCardNo` varchar(13) default NULL,
+  `visitorInTime` datetime default NULL,
+  `visitorOutTime` datetime default NULL,
+  `passStatus` varchar(7) NOT NULL,
+  `adminNotified` varchar(3) default NULL,
+  PRIMARY KEY  (`rowID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
+
+--
+-- Dumping data for table `tbl_archive_pass`
+--
+
+INSERT INTO `tbl_archive_pass` (`rowID`, `passID`, `visitorName`, `visitorType`, `visitorAddress`, `directorateToVisit`, `purposeOfVisit`, `scheduledVisitDate`, `isMultipleEntry`, `passCreator`, `sentryUserName`, `mobileNumber`, `nationalID`, `visitorCardNo`, `visitorInTime`, `visitorOutTime`, `passStatus`, `adminNotified`) VALUES
+(1, 36, 'visitor1', 'Military', 'add1', 1, 2, '2012-08-30', '', 'officer', 'sentry', 5, 5, '4450', '2012-08-23 07:19:26', '2012-08-28 00:00:00', 'closed', NULL),
+(2, 37, 'LtColTaher', 'Military', 'MIST', 4, 1, '2012-08-24', '', 'anis', NULL, 0, 0, '88', '2012-08-23 20:36:21', NULL, 'running', NULL),
+(3, 38, 'hhhh', 'Civilian', '', 2, 2, '2012-08-29', '', 'officer', NULL, 0, 0, '77', '2012-08-23 20:37:27', NULL, 'running', NULL),
+(4, 39, 'asif', 'Civilian', 'dgfdfgdfg', 3, 2, '2012-08-28', '', 'officer', NULL, 2, 3, '4', '2012-08-25 19:19:13', NULL, 'running', NULL),
+(5, 40, 'newaz', 'Military', 'dfgdgf', 1, 2, '2012-08-29', '', 'officer', NULL, 3, 3, '3', '2012-08-25 19:41:26', NULL, 'running', NULL),
+(6, 41, 'v3', 'Civilian', '', 2, 2, '2012-08-24', '', 'officer', NULL, 3, 4, '5', '2012-08-25 19:48:23', '2012-08-28 00:00:00', 'closed', NULL),
+(7, 42, 'v4', 'Military', '', 1, 1, '2012-08-30', '', 'officer', NULL, 0, 0, '999', '2012-08-25 19:53:18', NULL, 'running', NULL),
+(8, 43, 'v5', 'Civilian', '', 1, 2, '2012-08-31', '', 'officer', NULL, 0, 0, '1234', '2012-08-25 19:56:12', '2012-08-28 18:15:11', 'closed', NULL),
+(9, 44, 'v6', 'Military', '', 2, 1, '2012-08-29', '', 'officer', NULL, 0, 0, '', '2012-08-25 19:58:05', '2012-08-28 21:12:49', 'closed', NULL),
+(10, 46, 'v7', 'Civilian', '', 3, 1, '2012-08-28', '', 'sentry', NULL, NULL, NULL, NULL, NULL, NULL, 'open', NULL),
+(11, 47, 'Maj Sazzad', 'Military', 'MIST', 4, 3, '2012-08-30', '', 'anis', NULL, 44, 55, '6666', '2012-08-31 11:52:20', NULL, 'running', NULL),
+(12, 48, 'masud', 'Civilian', 'abcd', 6, 1, '2012-09-05', '', 'officer', NULL, NULL, NULL, NULL, NULL, NULL, 'open', NULL),
+(13, 49, 'azad', 'Civilian', 'pqr', 2, 1, '2012-09-05', '', 'officer', NULL, NULL, NULL, NULL, NULL, NULL, 'open', NULL),
+(14, 50, 'zahed', 'Civilian', 'MIST', 2, 1, '2012-09-07', '', 'officer', NULL, NULL, NULL, NULL, NULL, NULL, 'open', NULL),
+(15, 51, 'aaaaaaaaaa', 'Civilian', 'bbbbbbbbbbbbb', 1, 1, '2012-09-06', '', 'officer', NULL, 2147483647, NULL, NULL, NULL, NULL, 'open', NULL),
+(16, 54, '7sep_v1', 'Military', 'bhbhfgbb', 2, 1, '2012-09-04', '', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', NULL),
+(17, 58, '7sep_v4', 'Military', 'ghgf', 1, 1, '2012-09-10', 'yes', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', NULL),
+(18, 55, 'Visitor_n_111', 'Civilian', 'dfhgfhf', 3, 1, '2012-09-12', '', 'officer', NULL, 3455, 111, '55555', '2012-10-03 22:31:45', NULL, 'running', '0'),
+(19, 64, 'Visitor_m_55555', 'Military', 'dgdg', 2, 1, '2012-09-12', 'yes', 'officer', NULL, 55555, 0, '55555', '2012-10-03 22:30:49', NULL, 'running', '0'),
+(20, 53, 'Visitor_n_111', 'Military', 'kkkkk', 1, 1, '2012-09-14', '', 'officer', NULL, 345, 111, '123', '2012-09-14 18:14:32', NULL, 'running', '0'),
+(21, 56, 'Visitor_m_55555', 'Civilian', 'hbgfh', 3, 1, '2012-09-13', '', 'officer', NULL, 55555, 765, '55555', '2012-10-03 22:31:19', NULL, 'running', '0'),
+(22, 57, 'Visitor_m_55555', 'Civilian', 'bmbnm', 3, 1, '2012-09-13', '', 'officer', NULL, 55555, NULL, '55555', NULL, NULL, 'open', '0'),
+(23, 59, 'Visitor_m_55555', 'Military', 'fg', 3, 1, '2012-09-13', 'no', 'officer', NULL, 55555, NULL, '55555', NULL, NULL, 'open', '0'),
+(24, 82, 'May1', 'Civilian', 'MIST', 1, 1, '2012-05-01', 'no', 'officer', NULL, 1234, NULL, NULL, NULL, NULL, 'open', NULL),
+(25, 83, 'may2', 'Civilian', '3eeee', 1, 1, '2012-05-02', 'yes', 'officer', NULL, 1234, NULL, NULL, NULL, NULL, 'open', NULL),
+(26, 60, 'Visitor_m_2147483647', 'Military', 'sfsaf', 3, 4, '2012-09-24', 'yes', 'officer', NULL, 2147483647, 999, '54645regtg', '2012-09-14 18:27:13', '2012-10-19 19:33:59', 'closed', 'yes'),
+(27, 61, 'Visitor_m_2147483647', 'Civilian', 'fasdfgsadgfsd', 6, 2, '2012-09-24', 'no', 'officer', NULL, 2147483647, 999, 'gffghfgh64564', '2012-09-15 21:04:43', NULL, 'running', 'yes'),
+(28, 62, 'Visitor_m_2147483647', 'Military', 'gergg', 5, 3, '2012-09-24', 'no', 'officer', NULL, 2147483647, 999, '534535', '2012-09-24 20:54:48', '2012-10-19 19:34:06', 'closed', '0'),
+(29, 52, 'Visitor_n_111', 'Civilian', 'h', 2, 1, '2012-10-03', '', 'officer', NULL, 999, 111, '666666', '2012-09-06 16:52:05', NULL, 'running', '0'),
+(30, 68, 'hgjhg', 'Military', '', 4, 1, '2012-10-05', 'no', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', '0'),
+(31, 69, 'visitor', 'Military', '', 3, 4, '2012-10-06', 'no', 'officer', NULL, 453464532, NULL, NULL, NULL, NULL, 'open', '0'),
+(32, 70, 'temPTest', 'Civilian', 'MIST', 1, 1, '2012-10-07', 'no', 'officer', NULL, 1710000000, 0, '4', '2012-10-07 18:02:17', '2012-10-07 18:02:39', 'closed', NULL),
+(33, 71, 'temPTest', 'Civilian', 'abcd', 4, 1, '2012-10-08', 'yes', 'officer', NULL, 1710000000, NULL, NULL, NULL, NULL, 'open', NULL),
+(34, 72, 'temPTest', 'Military', 'MIST', 2, 3, '2012-10-09', 'yes', 'officer', NULL, 1710000000, 0, '44', '2012-10-19 19:33:38', NULL, 'running', NULL),
+(35, 73, 'temPTest2', 'Military', '139 banani', 5, 1, '2012-10-10', 'no', 'officer', NULL, 176014444, NULL, NULL, NULL, NULL, 'open', NULL),
+(36, 74, 'temPTest3', 'Military', '111 banani', 4, 1, '2012-10-10', 'yes', 'officer', NULL, 1234, NULL, NULL, NULL, NULL, 'open', NULL),
+(37, 75, 'temPTest', 'Civilian', 'MIST', 2, 4, '2012-10-08', 'no', 'officer', NULL, 1234, 0, '6666', '2012-10-08 00:11:33', NULL, 'running', NULL),
+(38, 76, 'temPTest4', 'Military', '111 banani', 3, 1, '2012-10-09', 'no', 'officer', NULL, 1710000000, NULL, NULL, NULL, NULL, 'open', NULL),
+(39, 77, 'temPTest5', 'Military', '123abc', 5, 3, '2012-10-09', 'yes', 'officer', NULL, 345, NULL, NULL, NULL, NULL, 'open', NULL),
+(40, 78, 'temPTest11', 'Military', 'MIST', 3, 1, '2012-10-08', 'yes', 'officer', NULL, 1710000000, NULL, NULL, NULL, NULL, 'open', NULL),
+(41, 79, 'temPTest12', 'Military', '111 banani', 6, 3, '2012-10-08', 'no', 'officer', NULL, 1234, NULL, NULL, NULL, NULL, 'open', NULL),
+(42, 80, 'temPTest13', 'Civilian', '123abc', 5, 4, '2012-10-08', 'no', 'officer', NULL, 8888881, 0, '55', '2012-10-08 00:14:13', '2012-10-08 00:14:22', 'closed', NULL),
+(43, 81, 'temPTest14', 'Military', '139 banani', 2, 3, '2012-10-08', 'yes', 'officer', NULL, 1710000000, NULL, NULL, NULL, NULL, 'open', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_deleted_pass`
+--
+
+CREATE TABLE `tbl_deleted_pass` (
+  `rowID` int(11) NOT NULL auto_increment,
+  `passID` int(11) NOT NULL,
+  `visitorName` varchar(25) NOT NULL,
+  `visitorType` varchar(8) NOT NULL,
+  `visitorAddress` varchar(100) default NULL,
+  `directorateToVisit` int(3) NOT NULL,
+  `purposeOfVisit` int(3) default NULL,
+  `scheduledVisitDate` date NOT NULL,
+  `isMultipleEntry` varchar(3) NOT NULL default 'no',
+  `passCreator` varchar(15) NOT NULL,
+  `sentryUserName` varchar(25) default NULL,
+  `mobileNumber` int(11) default NULL,
+  `nationalID` int(13) default NULL,
+  `visitorCardNo` varchar(13) default NULL,
+  `visitorInTime` datetime default NULL,
+  `visitorOutTime` datetime default NULL,
+  `passStatus` varchar(7) NOT NULL,
+  `adminNotified` varchar(3) default NULL,
+  PRIMARY KEY  (`rowID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `tbl_deleted_pass`
+--
+
+INSERT INTO `tbl_deleted_pass` (`rowID`, `passID`, `visitorName`, `visitorType`, `visitorAddress`, `directorateToVisit`, `purposeOfVisit`, `scheduledVisitDate`, `isMultipleEntry`, `passCreator`, `sentryUserName`, `mobileNumber`, `nationalID`, `visitorCardNo`, `visitorInTime`, `visitorOutTime`, `passStatus`, `adminNotified`) VALUES
+(1, 65, 'chfgh', 'Military', 'gfhfgh', 2, 1, '2012-10-02', 'no', 'officer', NULL, 678567867, 2147483647, '7777777777777', '2012-10-02 23:34:11', '2012-10-19 19:33:52', 'closed', '0'),
+(2, 66, 'Visitor_n_222', 'Civilian', 'fhfhh', 1, 1, '2012-10-02', 'no', 'officer', NULL, 456456, 222, '477567567', '2012-10-02 23:37:57', '2012-10-19 19:34:02', 'closed', '0'),
+(3, 67, 'Visitor_n_222', 'Military', 'hfghfh', 3, 1, '2012-10-02', 'yes', 'officer', NULL, 3535345, 222, '534564353', '2012-10-02 23:41:40', NULL, 'running', '0'),
+(4, 65, 'chfgh', 'Military', 'gfhfgh', 2, 1, '2012-10-02', 'no', 'officer', NULL, 678567867, 2147483647, '7777777777777', '2012-10-02 23:34:11', '2012-10-19 19:33:52', 'closed', '0'),
+(5, 66, 'Visitor_n_222', 'Civilian', 'fhfhh', 1, 1, '2012-10-02', 'no', 'officer', NULL, 456456, 222, '477567567', '2012-10-02 23:37:57', '2012-10-19 19:34:02', 'closed', '0'),
+(6, 67, 'Visitor_n_222', 'Military', 'hfghfh', 3, 1, '2012-10-02', 'yes', 'officer', NULL, 3535345, 222, '534564353', '2012-10-02 23:41:40', NULL, 'running', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_directorate`
+--
+
+CREATE TABLE `tbl_directorate` (
+  `rowID` int(3) NOT NULL auto_increment,
+  `directorateName` varchar(25) NOT NULL,
+  `directorateDescription` text,
+  `isDisabled` varchar(3) default 'no',
+  PRIMARY KEY  (`rowID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `tbl_directorate`
+--
+
+INSERT INTO `tbl_directorate` (`rowID`, `directorateName`, `directorateDescription`, `isDisabled`) VALUES
+(1, 'Inf', 'Infentry', 'no'),
+(2, 'Arty', 'Artillary', 'no'),
+(3, 'Sigs', 'Signals', 'no'),
+(4, 'OO', 'Overseas Operations', 'no'),
+(5, 'MI', 'Military Intelligence', 'no'),
+(6, 'MO', 'Military Operations', 'no'),
+(7, 'Engrs', 'Engineers', 'no'),
+(8, 'MT', 'Military Training', 'yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_pass`
+--
+
+CREATE TABLE `tbl_pass` (
+  `rowID` int(11) NOT NULL auto_increment,
+  `visitorName` varchar(25) NOT NULL,
+  `visitorType` varchar(8) NOT NULL,
+  `visitorAddress` varchar(100) default NULL,
+  `directorateToVisit` int(3) NOT NULL,
+  `purposeOfVisit` int(3) default NULL,
+  `scheduledVisitDate` date NOT NULL,
+  `isMultipleEntry` varchar(3) NOT NULL default 'no',
+  `passCreator` varchar(15) NOT NULL,
+  `sentryUserName` varchar(25) default NULL,
+  `mobileNumber` int(11) default NULL,
+  `nationalID` int(13) default NULL,
+  `visitorCardNo` varchar(13) default NULL,
+  `visitorInTime` datetime default NULL,
+  `visitorOutTime` datetime default NULL,
+  `passStatus` varchar(7) NOT NULL,
+  `adminNotified` varchar(3) default NULL,
+  PRIMARY KEY  (`rowID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+
+--
+-- Dumping data for table `tbl_pass`
+--
+
+INSERT INTO `tbl_pass` (`rowID`, `visitorName`, `visitorType`, `visitorAddress`, `directorateToVisit`, `purposeOfVisit`, `scheduledVisitDate`, `isMultipleEntry`, `passCreator`, `sentryUserName`, `mobileNumber`, `nationalID`, `visitorCardNo`, `visitorInTime`, `visitorOutTime`, `passStatus`, `adminNotified`) VALUES
+(1, 'a1', 'Military', 'abcd', 2, 2, '2012-12-03', 'no', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', NULL),
+(2, 'a2', 'Civilian', '123abc', 3, 3, '2012-12-03', 'no', 'officer', NULL, 1710000000, NULL, NULL, NULL, NULL, 'open', NULL),
+(3, 'a3', 'Military', 'dfhgfhf', 2, 4, '2012-12-03', 'no', 'officer', NULL, 8888881, NULL, NULL, NULL, NULL, 'open', NULL),
+(4, 'a4', 'Civilian', 'dfhgfhf', 5, 1, '2012-12-03', 'no', 'officer', NULL, 2147483647, NULL, NULL, NULL, NULL, 'open', NULL),
+(5, 'a5', 'Military', 'abcd', 7, 2, '2012-12-03', 'yes', 'officer', NULL, 1710000000, NULL, NULL, NULL, NULL, 'open', NULL),
+(6, 'a6', 'Military', '123abc', 4, 3, '2012-12-03', 'yes', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', NULL),
+(7, 'a7', 'Military', '123abc', 5, 1, '2012-12-03', 'yes', 'officer', NULL, 1710000000, 0, '23456', '2012-12-03 09:57:58', '2012-12-03 09:59:19', 'closed', NULL),
+(8, 'a8', 'Civilian', 'dfhgfhf', 6, 1, '2012-12-03', 'no', 'officer', NULL, 8888881, NULL, NULL, NULL, NULL, 'open', NULL),
+(9, 'b1', 'Military', '123abc', 5, 3, '2012-12-04', 'no', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', NULL),
+(10, 'b2', 'Military', '123abc', 3, 2, '2012-12-04', 'no', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', NULL),
+(11, 'b3', 'Military', '123abc', 6, 1, '2012-12-04', 'yes', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', NULL),
+(12, 'b4', 'Military', 'dedir tek', 2, 2, '2012-12-04', 'no', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', NULL),
+(13, 'b6', 'Civilian', 'MIST', 1, 2, '2012-12-04', 'no', 'officer', NULL, 0, NULL, NULL, '2012-11-14 16:51:41', NULL, 'open', NULL),
+(14, 'b7', 'Military', 'mist', 3, 4, '2012-12-04', 'no', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', NULL),
+(15, 'b8', 'Military', 'mist', 6, 1, '2012-12-04', 'yes', 'officer', NULL, 1710000000, NULL, NULL, NULL, NULL, 'open', NULL),
+(16, 'b9', 'Military', 'mist', 6, 1, '2012-12-04', 'yes', 'officer', NULL, 0, NULL, NULL, '2012-12-04 19:34:41', NULL, 'open', NULL),
+(17, 'b10', 'Military', '123abc', 7, 1, '2012-12-04', 'yes', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', NULL),
+(18, 'c1', 'Military', 'mist', 3, 3, '2012-12-05', 'no', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', NULL),
+(19, 'c2', 'Military', 'mist', 5, 1, '2012-12-05', 'no', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', NULL),
+(20, 'c3', 'Military', '111 lake circus road', 5, 1, '2012-12-05', 'no', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', NULL),
+(21, 'c4', 'Military', '111 lake circus road', 3, 2, '2012-12-05', 'no', 'officer', NULL, 2147483647, NULL, NULL, NULL, NULL, 'open', NULL),
+(22, 'c5', 'Military', 'mist', 5, 1, '2012-12-05', 'yes', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', NULL),
+(23, 'c6', 'Military', 'mist', 5, 1, '2012-12-05', 'yes', 'officer', NULL, 0, NULL, NULL, NULL, NULL, 'open', NULL),
+(24, 'v1', 'Military', 'mist', 5, 1, '2012-12-03', 'yes', 'officer', NULL, 168525897, 0, '8888883', '2012-12-03 09:59:59', NULL, 'running', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_pass_foreigner`
+--
+
+CREATE TABLE `tbl_pass_foreigner` (
+  `rowID` int(11) NOT NULL auto_increment,
+  `visitorName` varchar(25) NOT NULL,
+  `visitorCountry` varchar(20) NOT NULL,
+  `visitorAddress` varchar(100) default NULL,
+  `directorateToVisit` int(3) NOT NULL,
+  `purposeOfVisit` int(3) default NULL,
+  `scheduledVisitDate` date NOT NULL,
+  `passCreator` varchar(15) NOT NULL,
+  `mobileNumber` int(11) default NULL,
+  `visitorCardNo` varchar(13) default NULL,
+  `visitorInTime` datetime default NULL,
+  `visitorOutTime` datetime default NULL,
+  `passStatus` varchar(7) NOT NULL,
+  `approvalStatus` tinyint(2) NOT NULL default '0',
+  `officerNotified` varchar(3) default 'no',
+  `adminNotified` varchar(3) default 'no',
+  PRIMARY KEY  (`rowID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+
+--
+-- Dumping data for table `tbl_pass_foreigner`
+--
+
+INSERT INTO `tbl_pass_foreigner` (`rowID`, `visitorName`, `visitorCountry`, `visitorAddress`, `directorateToVisit`, `purposeOfVisit`, `scheduledVisitDate`, `passCreator`, `mobileNumber`, `visitorCardNo`, `visitorInTime`, `visitorOutTime`, `passStatus`, `approvalStatus`, `officerNotified`, `adminNotified`) VALUES
+(1, 'Che Lo Min', '', 'PRC', 5, 1, '2012-09-07', 'officer', NULL, NULL, NULL, NULL, 'open', 1, 'yes', 'yes'),
+(2, 'MTC de Silva', 'Srilanka', 'MIST', 8, 1, '2012-09-13', 'officer', NULL, NULL, NULL, NULL, 'open', 1, 'yes', 'no'),
+(5, 'Mr Barak Obama', 'USA', 'White House', 6, 1, '2012-09-30', 'officer', NULL, NULL, NULL, NULL, 'open', 2, 'yes', 'no'),
+(6, 'Mr Barak Obama', 'USA', 'white house', 7, 4, '2012-10-09', 'officer', 8888881, '9512', '2012-11-15 11:30:43', '2012-10-13 11:31:50', 'closed', 0, 'no', 'no'),
+(7, 'Mr Colin', 'UK', '111 banani', 1, 3, '2012-10-10', 'officer', NULL, NULL, NULL, NULL, 'open', 0, 'no', 'no'),
+(8, 'Mr Barak Obama', 'USA', 'dfhgfhf', 4, 1, '2012-10-13', 'officer', NULL, NULL, NULL, NULL, 'open', 0, 'no', 'no'),
+(9, '12OctForeign', 'Srilanka', '123abc', 7, 1, '2012-10-13', 'officer', NULL, NULL, NULL, NULL, 'open', 1, 'yes', 'yes'),
+(10, '12OctForeignAdmFL', 'India', 'iiii', 5, 1, '2012-09-12', 'adminfl', NULL, NULL, NULL, NULL, 'open', 1, 'no', 'no'),
+(11, 'CHU CHI Chen', 'China', '139 banani', 3, 1, '2012-05-17', 'officer', NULL, NULL, NULL, NULL, 'open', 1, 'no', 'no'),
+(12, 'Mr Barak Obama', 'USA', 'white house', 5, 1, '2012-12-12', 'officer', NULL, NULL, NULL, NULL, 'open', 0, 'no', 'no'),
+(13, 'Cho chi min', 'China', 'abcd efgh ', 6, 4, '2012-12-11', 'officer', NULL, NULL, NULL, NULL, 'open', 0, 'no', 'no'),
+(14, 'Wang tung', 'Japan', 'Japan Ambassy', 6, 4, '2012-12-10', 'officer', NULL, NULL, NULL, NULL, 'open', 0, 'no', 'no'),
+(15, 'Mr Kolin', 'Thailand', '111 lake circus road', 2, 1, '2012-12-24', 'officer', NULL, NULL, NULL, NULL, 'open', 0, 'no', 'no'),
+(16, 'Mr S Tendulkar', 'India', '111 lake circus road', 6, 3, '2012-12-12', 'officer', NULL, NULL, NULL, NULL, 'open', 0, 'no', 'no'),
+(17, 'Mr Pollok', 'KSA', '123abc south road', 3, 1, '2012-12-11', 'officer', NULL, NULL, NULL, NULL, 'open', 0, 'no', 'no');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_pass_temporary`
+--
+
+CREATE TABLE `tbl_pass_temporary` (
+  `rowID` int(11) NOT NULL auto_increment,
+  `visitorName` varchar(25) NOT NULL,
+  `visitorType` varchar(8) NOT NULL,
+  `visitorAddress` varchar(100) default NULL,
+  `directorateToVisit` int(3) NOT NULL,
+  `purposeOfVisit` int(3) default NULL,
+  `startDate` date NOT NULL,
+  `endDate` date NOT NULL,
+  `passCreator` varchar(15) NOT NULL,
+  `sentryUserName` varchar(25) default NULL,
+  `mobileNumber` int(11) default NULL,
+  `nationalID` int(13) default NULL,
+  `visitorCardNo` varchar(13) default NULL,
+  `visitorInTime` datetime default NULL,
+  `visitorOutTime` datetime default NULL,
+  `passStatus` varchar(7) NOT NULL,
+  `approvalStatus` tinyint(4) NOT NULL default '0',
+  `officerNotified` varchar(3) NOT NULL default 'no',
+  PRIMARY KEY  (`rowID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `tbl_pass_temporary`
+--
+
+INSERT INTO `tbl_pass_temporary` (`rowID`, `visitorName`, `visitorType`, `visitorAddress`, `directorateToVisit`, `purposeOfVisit`, `startDate`, `endDate`, `passCreator`, `sentryUserName`, `mobileNumber`, `nationalID`, `visitorCardNo`, `visitorInTime`, `visitorOutTime`, `passStatus`, `approvalStatus`, `officerNotified`) VALUES
+(1, 'testTemp', 'Military', 'MIST', 3, 1, '2012-09-06', '2012-09-06', 'officer', NULL, 456789, 33333333, '44444444444', '2012-09-09 22:41:10', '2012-09-09 22:49:40', 'closed', 1, 'no'),
+(2, 'temPTest', 'Military', 'abcd', 3, 1, '2012-10-06', '2012-10-06', 'officer', NULL, 221, 0, '2441', '2012-11-10 11:16:38', NULL, 'running', 1, 'no'),
+(3, 'PassTemp', 'Military', 'MIST', 6, 1, '2012-10-25', '2012-10-25', 'officer', NULL, NULL, NULL, NULL, NULL, NULL, 'open', 0, 'no'),
+(4, 'temPTest', 'Military', '111 banani', 3, 1, '2012-10-16', '2012-10-16', 'officer', NULL, NULL, NULL, NULL, NULL, NULL, 'open', 1, 'no'),
+(5, '12OctTemp', 'Civilian', 'ded', 8, 1, '2012-10-23', '2012-10-23', 'officer', NULL, NULL, NULL, NULL, NULL, NULL, 'open', 1, 'yes'),
+(6, '12OctTempAdmFL', 'Civilian', 'kkkkkkkk', 7, 1, '2012-10-18', '2012-10-18', 'adminfl', NULL, NULL, NULL, NULL, NULL, NULL, 'open', 1, 'no'),
+(7, 'Rafiq', 'Civilian', '111 banani', 3, 1, '2012-05-17', '2012-05-17', 'officer', NULL, NULL, NULL, NULL, NULL, NULL, 'open', 1, 'no'),
+(8, 'temPTest', 'Military', 'mist', 3, 1, '2012-12-19', '2012-12-19', 'officer', NULL, NULL, NULL, NULL, NULL, NULL, 'open', 1, 'no'),
+(9, 'temPTest2', 'Military', '111 lake circus road', 6, 1, '2012-12-18', '2012-12-18', 'officer', NULL, NULL, NULL, NULL, '2012-12-03 19:33:46', NULL, 'open', 0, 'no'),
+(10, 'temPTest3', 'Military', 'mist', 7, 1, '2012-12-21', '2012-12-21', 'officer', NULL, NULL, NULL, NULL, NULL, NULL, 'open', 0, 'no'),
+(11, 'temPTest5', 'Military', 'STC&S', 3, 1, '2012-12-19', '2012-12-19', 'officer', NULL, NULL, NULL, NULL, NULL, NULL, 'open', 0, 'no');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_policy_upload`
+--
+
+CREATE TABLE `tbl_policy_upload` (
+  `rowID` tinyint(4) NOT NULL auto_increment,
+  `sortOrder` tinyint(4) NOT NULL,
+  `policyName` varchar(30) NOT NULL,
+  `policyDescription` varchar(100) default NULL,
+  `fileName` varchar(100) NOT NULL,
+  PRIMARY KEY  (`rowID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `tbl_policy_upload`
+--
+
+INSERT INTO `tbl_policy_upload` (`rowID`, `sortOrder`, `policyName`, `policyDescription`, `fileName`) VALUES
+(1, 1, 'PolicyTest', 'testing upload of policy files ', 'aaaaaaaaaaaaaaaaaa.pdf');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_rank`
+--
+
+CREATE TABLE `tbl_rank` (
+  `rowID` int(3) NOT NULL,
+  `rankName` varchar(25) NOT NULL,
+  `forSentry` varchar(3) default 'no',
+  `rankDescription` text,
+  `isDisabled` varchar(3) default 'no',
+  PRIMARY KEY  (`rowID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_rank`
+--
+
+INSERT INTO `tbl_rank` (`rowID`, `rankName`, `forSentry`, `rankDescription`, `isDisabled`) VALUES
+(1, 'Gen (CAS)', 'no', 'General', 'no'),
+(2, 'Lt Gen', 'no', 'Lieutenant General', 'no'),
+(3, 'Maj Gen', 'no', 'Major General', 'no'),
+(4, 'Brig Gen', 'no', 'Brigadier General', 'no'),
+(5, 'Col', 'no', 'Colonel', 'no'),
+(6, 'Lt Col', 'no', 'Lieutenant Colonel', 'no'),
+(8, 'Maj', 'no', 'Major', 'no'),
+(9, 'SWO', 'yes', 'Senior Warrent Officer', 'no'),
+(10, 'WO', 'yes', 'Warrent Officer', 'no'),
+(11, 'Sgt', 'yes', 'Sargent', 'no');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_registration`
+--
+
+CREATE TABLE `tbl_registration` (
+  `rowID` int(11) NOT NULL auto_increment,
+  `userName` varchar(15) NOT NULL,
+  `title` varchar(15) default NULL,
+  `firstName` text NOT NULL,
+  `lastName` text,
+  `rank` int(4) NOT NULL,
+  `appointment` int(4) default NULL,
+  `directorate` int(4) default NULL,
+  `joiningDate` date default NULL,
+  `emailAddress` varchar(30) default NULL,
+  `officePhone` varchar(15) default NULL,
+  `cellPhone` varchar(15) default NULL,
+  PRIMARY KEY  (`rowID`),
+  UNIQUE KEY `uerName` (`userName`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=162 ;
+
+--
+-- Dumping data for table `tbl_registration`
+--
+
+INSERT INTO `tbl_registration` (`rowID`, `userName`, `title`, `firstName`, `lastName`, `rank`, `appointment`, `directorate`, `joiningDate`, `emailAddress`, `officePhone`, `cellPhone`) VALUES
+(109, 'asif', 'Mr', 'asif', 'newaz', 3, 0, 0, '0000-00-00', 'admin', NULL, NULL),
+(115, 'azad', 'Dr', 'azadul', 'alam', 1, 1, 1, '0000-00-00', 'azad@fgg.com', NULL, NULL),
+(118, 'imrankhan', 'Mr', 'imran', 'khan', 1, 1, 1, '0000-00-00', 'khan@yahoo.com', NULL, NULL),
+(122, 'test777', 'Mr', 'hgfhgfhgf', 'dgdfgd', 1, 1, 1, '0000-00-00', 'q', NULL, NULL),
+(140, 'adm', 'Mr', 'admin', '.', 6, 2, 3, '2012-08-23', 'adm@yahoo.com', '4444', '0171377777'),
+(142, 'anik', NULL, 'anik', 'gupta', 2, 1, 1, '2012-09-10', 'gdfgfg', '876678', '976'),
+(144, 's1', NULL, 'sssss', 'frfref', 1, 0, 0, '2012-09-11', 'gege', '4444', '545'),
+(145, 's2', NULL, 'fsdf', 'fsddf', 2, 0, 0, '2012-09-03', 'dsf', '22', '2'),
+(146, 's3', NULL, 'fff', 'lll', 1, 0, 0, '2012-09-04', 'gg', '7697', '865876'),
+(147, 's4', NULL, 'gfgdf', '', 1, 0, 0, '0000-00-00', '', '', ''),
+(149, 's5', NULL, 'gfgdf', '', 1, 0, 0, '0000-00-00', '', '', ''),
+(159, 'un1_admin', NULL, 'f', 'l', 4, 4, 8, '0000-00-00', 'jgtyjfgjghj', '54545345', '35434535'),
+(161, 'testAFL2', NULL, 'gdgdfg', 'dgfdg', 3, 3, 1, '2012-10-01', 'dgdfgdfgdfg', '345', 'officer');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user_info`
+--
+
+CREATE TABLE `tbl_user_info` (
+  `rowID` int(11) NOT NULL auto_increment,
+  `userName` varchar(15) NOT NULL,
+  `userPassword` varchar(30) NOT NULL default '',
+  `userType` int(5) NOT NULL default '0',
+  `approvalStatus` tinyint(1) NOT NULL,
+  PRIMARY KEY  (`rowID`),
+  UNIQUE KEY `userName` (`userName`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
+
+--
+-- Dumping data for table `tbl_user_info`
+--
+
+INSERT INTO `tbl_user_info` (`rowID`, `userName`, `userPassword`, `userType`, `approvalStatus`) VALUES
+(1, 'admin', 'a', 1, 1),
+(2, 'officer', 'o', 2, 1),
+(13, 'adminfl', 'a', 4, 1),
+(4, 'sentry', 's', 3, 1),
+(26, 'anik', '5', 2, 2),
+(28, 's1', '5', 3, 1),
+(29, 's2', '5', 3, 1),
+(30, 's3', '5', 3, 1),
+(31, 's4', '5', 3, 1),
+(32, 'asentry', '5', 3, 1),
+(44, 'testAFL2', '1', 4, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_visit_purpose`
+--
+
+CREATE TABLE `tbl_visit_purpose` (
+  `rowID` int(11) NOT NULL auto_increment,
+  `purposeName` varchar(25) NOT NULL,
+  `isDisabled` varchar(3) default 'no',
+  PRIMARY KEY  (`rowID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `tbl_visit_purpose`
+--
+
+INSERT INTO `tbl_visit_purpose` (`rowID`, `purposeName`, `isDisabled`) VALUES
+(1, 'Official Order', 'no'),
+(2, 'Personal', 'no'),
+(3, 'Interview', 'no'),
+(4, 'Supplier', 'no');
